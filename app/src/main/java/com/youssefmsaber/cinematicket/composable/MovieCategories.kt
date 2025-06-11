@@ -1,4 +1,4 @@
-package com.youssefmsaber.cinematicket.home.composable
+package com.youssefmsaber.cinematicket.composable
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.layout.Arrangement
@@ -7,7 +7,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.youssefmsaber.cinematicket.composable.Chip
 import com.youssefmsaber.cinematicket.ui.theme.Black
 
 @Composable
