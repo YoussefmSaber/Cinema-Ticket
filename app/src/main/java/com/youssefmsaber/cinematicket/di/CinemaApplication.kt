@@ -11,6 +11,7 @@ class CinemaApplication: Application() {
         startKoin {
             androidLogger()
             androidContext(this@CinemaApplication)
+            modules(viewModelModule)
         }
     }
 }
