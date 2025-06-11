@@ -1,0 +1,150 @@
+package com.youssefmsaber.cinematicket.home
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.youssefmsaber.cinematicket.R
+import com.youssefmsaber.cinematicket.composable.Chip
+import com.youssefmsaber.cinematicket.home.composable.BlurredImage
+import com.youssefmsaber.cinematicket.home.composable.BottomBarItem
+import com.youssefmsaber.cinematicket.home.composable.HorizontalHomePager
+import com.youssefmsaber.cinematicket.home.composable.MovieCategories
+import com.youssefmsaber.cinematicket.home.composable.MovieDuration
+import com.youssefmsaber.cinematicket.home.composable.MovieName
+import com.youssefmsaber.cinematicket.home.model.Movie
+import com.youssefmsaber.cinematicket.home.viewmodel.HomeViewModel
+import com.youssefmsaber.cinematicket.ui.theme.Black
+import com.youssefmsaber.cinematicket.ui.theme.Grey
+import com.youssefmsaber.cinematicket.ui.theme.Orange
+import com.youssefmsaber.cinematicket.ui.theme.White
+import org.koin.androidx.compose.koinViewModel
+
+@Composable
+fun HomeScreen(viewModel: HomeViewModel = koinViewModel()) {
+
+
+    viewModel.getMovies()
+
+    val movies by viewModel.movies.collectAsStateWithLifecycle()
+    HomeScreenContent(
+        movies = movies
+    )
+}
+
+@Composable
+fun HomeScreenContent(
+    movies: List<Movie>
+) {
+    Scaffold(
+        containerColor = White,
+        bottomBar = {
+            Row(
+                modifier = Modifier
+                    .padding(horizontal = 24.dp, vertical = 16.dp)
+                    .fillMaxWidth()
+                    .background(White),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                BottomBarItem(
+                    modifier = Modifier,
+                    icon = R.drawable.movie,
+                    iconTint = White,
+                    backgroundColor = Orange
+                )
+                BottomBarItem(
+                    modifier = Modifier,
+                    icon = R.drawable.search,
+                    iconTint = Black,
+                    backgroundColor = Color.Transparent
+                )
+                BottomBarItem(
+                    modifier = Modifier,
+                    icon = R.drawable.ticket,
+                    iconTint = Black,
+                    backgroundColor = Color.Transparent
+                )
+                BottomBarItem(
+                    modifier = Modifier,
+                    icon = R.drawable.profile,
+                    iconTint = Black,
+                    backgroundColor = Color.Transparent
+                )
+            }
+        }
+    ) { innerPadding ->
+        val pagerState = rememberPagerState(initialPage = 1, pageCount = { movies.size })
+        Box(
+            modifier = Modifier
+                .padding(innerPadding)
+                .fillMaxSize()
+                .background(Color.White)
+                .verticalScroll(rememberScrollState())
+        ) {
+            BlurredImage(imageId = movies[pagerState.currentPage].image)
+            Column(
+                modifier = Modifier.padding(top = 24.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    Chip(
+                        modifier = Modifier,
+                        text = "Now Showing",
+                        borderWidth = 0.dp,
+                        backgroundColor = Orange,
+                        textColor = White,
+                        borderColor = Color.Transparent
+                    )
+                    Chip(
+                        modifier = Modifier,
+                        text = "Coming Soon",
+                        borderWidth = 1.dp,
+                        backgroundColor = Color.Transparent,
+                        borderColor = Grey,
+                        textColor = Color.White
+                    )
+                }
+                HorizontalHomePager(pagerState, movies)
+                MovieDuration(movieDuration = movies[pagerState.currentPage].duration)
+                MovieName(movieName = movies[pagerState.currentPage].name)
+                MovieCategories(movies[pagerState.currentPage].category)
+            }
+        }
+    }
+}
+
+
+@Preview
+@Composable
+fun HomeScreenPreview() {
+    HomeScreenContent(
+        movies = listOf(
+            Movie(
+                id = 1,
+                name = "Morbius",
+                image = R.drawable.morbius,
+                category = listOf("Action", "Horror"),
+                duration = "1h 46m"
+            )
+        )
+    )
+}
