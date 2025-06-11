@@ -10,10 +10,10 @@ val Purple40 = Color(0xFF6650a4)
 val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
-val OrangeButton = Color (0xFFFF5624)
-
-val LightBrown = Color(0xFFA2988B)
-val DarkBrown = Color (0xFF958E84)
-
-val SeatTakenColor = Color(0xFF404040)
-val SecondaryTextColor = Color(0xFFC2C5CD)
+val White = Color(0xFFFFFFFF)
+val Black = Color(0xFF010101)
+val Grey = Color(0xFF989185)
+val DarkGrey = Color(0xFF404040)
+val Orange = Color(0xFFFF5524)
+val LightOrange = Color(0x80FF5524)
+val LightGrey = Color(0xFFEFEFEF)
