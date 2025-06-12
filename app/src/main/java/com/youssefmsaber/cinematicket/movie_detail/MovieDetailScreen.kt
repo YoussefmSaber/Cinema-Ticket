@@ -44,7 +44,7 @@ import com.youssefmsaber.cinematicket.movie_detail.model.MovieDetails
 import com.youssefmsaber.cinematicket.movie_detail.model.Rating
 import com.youssefmsaber.cinematicket.movie_detail.viewmodel.MovieDetailViewModel
 import com.youssefmsaber.cinematicket.ui.theme.Black
-import com.youssefmsaber.cinematicket.ui.theme.Roboto
+import com.youssefmsaber.cinematicket.ui.theme.OpenSans
 import com.youssefmsaber.cinematicket.ui.theme.White
 import org.koin.androidx.compose.koinViewModel
 
@@ -129,7 +129,7 @@ private fun MovieDescription(
         text = movieDetails,
         style = TextStyle(
             fontSize = 15.sp,
-            fontFamily = Roboto,
+            fontFamily = OpenSans,
             fontWeight = FontWeight.Normal,
             letterSpacing = 0.25.sp,
             color = Black,
@@ -151,7 +151,7 @@ private fun MovieTitle(movieName: String) {
         style = TextStyle(
             fontSize = 28.sp,
             letterSpacing = 0.15.sp,
-            fontFamily = Roboto,
+            fontFamily = OpenSans,
             fontWeight = FontWeight.Normal,
             color = Black,
             textAlign = TextAlign.Center

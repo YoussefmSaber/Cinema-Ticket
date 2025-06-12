@@ -1,7 +1,6 @@
 package com.youssefmsaber.cinematicket.home.composable
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -22,20 +21,17 @@ fun BottomBarItem(
     modifier: Modifier = Modifier,
     icon: Int,
     iconTint: Color,
-    backgroundColor: Color
+    backgroundColor: Color,
 ) {
-    Box(
-        modifier = modifier.background(backgroundColor, shape = CircleShape)
-    ) {
-        Icon(
-            modifier = modifier
-                .padding(12.dp)
-                .size(32.dp),
-            painter = painterResource(icon),
-            contentDescription = "Bottom Bar Item",
-            tint = iconTint
-        )
-    }
+    Icon(
+        modifier = modifier
+            .background(backgroundColor, shape = CircleShape)
+            .padding(12.dp)
+            .size(32.dp),
+        painter = painterResource(icon),
+        contentDescription = "Bottom Bar Item",
+        tint = iconTint
+    )
 }
 
 @Preview

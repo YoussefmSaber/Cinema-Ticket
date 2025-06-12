@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import com.youssefmsaber.cinematicket.movie_detail.model.Rating
 import com.youssefmsaber.cinematicket.ui.theme.Black
 import com.youssefmsaber.cinematicket.ui.theme.Grey
-import com.youssefmsaber.cinematicket.ui.theme.Roboto
+import com.youssefmsaber.cinematicket.ui.theme.OpenSans
 
 
 @Composable
@@ -39,7 +39,7 @@ fun MovieRatings(
                 withStyle(
                     style = SpanStyle(
                         color = Black,
-                        fontFamily = Roboto,
+                        fontFamily = OpenSans,
                         fontWeight = FontWeight.Medium
                     )
                 ) {
@@ -48,7 +48,7 @@ fun MovieRatings(
                 withStyle(
                     style = SpanStyle(
                         color = Grey,
-                        fontFamily = Roboto,
+                        fontFamily = OpenSans,
                     )
                 ) {
                     append(it.unit)
@@ -65,7 +65,7 @@ fun MovieRatings(
                     it.platform,
                     style = TextStyle(
                         color = Grey,
-                        fontFamily = Roboto,
+                        fontFamily = OpenSans,
                     )
                 )
             }

@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.sp
 import com.youssefmsaber.cinematicket.R
 import com.youssefmsaber.cinematicket.ui.theme.Black
 import com.youssefmsaber.cinematicket.ui.theme.Grey
-import com.youssefmsaber.cinematicket.ui.theme.Roboto
+import com.youssefmsaber.cinematicket.ui.theme.OpenSans
 
 @Composable
 fun MovieDuration(
@@ -52,7 +52,7 @@ fun MovieDuration(
                 style = TextStyle(
                     fontSize = textSize,
                     letterSpacing = 0.15.sp,
-                    fontFamily = Roboto,
+                    fontFamily = OpenSans,
                     fontWeight = FontWeight.Medium,
                     color = textColor
                 )

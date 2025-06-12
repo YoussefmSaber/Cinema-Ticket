@@ -12,6 +12,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.youssefmsaber.cinematicket.ui.theme.Black
+import com.youssefmsaber.cinematicket.ui.theme.OpenSans
 
 @Composable
 fun MovieName(
@@ -26,6 +27,7 @@ fun MovieName(
             modifier = modifier.padding(vertical = 16.dp, horizontal = 32.dp),
             text = movieName,
             style = TextStyle(
+                fontFamily = OpenSans,
                 fontSize = 30.sp,
                 letterSpacing = 0.15.sp,
                 fontWeight = FontWeight.Medium,

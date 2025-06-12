@@ -23,6 +23,7 @@ import com.youssefmsaber.cinematicket.ticket_booking.model.AvailableHours
 import com.youssefmsaber.cinematicket.ui.theme.Black
 import com.youssefmsaber.cinematicket.ui.theme.Grey
 import com.youssefmsaber.cinematicket.ui.theme.LightGrey
+import com.youssefmsaber.cinematicket.ui.theme.OpenSans
 import com.youssefmsaber.cinematicket.ui.theme.White
 
 @Composable
@@ -53,7 +54,8 @@ fun AvailableHoursRow(
                     text = it.hour,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Medium,
-                    color = if (it.isSelected) White else Black
+                    color = if (it.isSelected) White else Black,
+                    fontFamily = OpenSans,
                 )
             }
         }

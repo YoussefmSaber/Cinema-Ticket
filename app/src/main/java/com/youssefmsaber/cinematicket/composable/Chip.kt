@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.youssefmsaber.cinematicket.ui.theme.Grey
-import com.youssefmsaber.cinematicket.ui.theme.Roboto
+import com.youssefmsaber.cinematicket.ui.theme.OpenSans
 import com.youssefmsaber.cinematicket.ui.theme.White
 
 @Composable
@@ -39,7 +39,7 @@ fun Chip(
             style = TextStyle(
                 color = textColor,
                 fontSize = 14.sp,
-                fontFamily = Roboto,
+                fontFamily = OpenSans,
                 letterSpacing = 0.15.sp,
                 fontWeight = FontWeight.Normal
             )

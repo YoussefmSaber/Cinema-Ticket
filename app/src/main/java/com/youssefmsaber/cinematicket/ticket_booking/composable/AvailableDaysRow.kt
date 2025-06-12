@@ -24,7 +24,7 @@ import com.youssefmsaber.cinematicket.ticket_booking.model.StreamDays
 import com.youssefmsaber.cinematicket.ui.theme.Black
 import com.youssefmsaber.cinematicket.ui.theme.Grey
 import com.youssefmsaber.cinematicket.ui.theme.LightGrey
-import com.youssefmsaber.cinematicket.ui.theme.Roboto
+import com.youssefmsaber.cinematicket.ui.theme.OpenSans
 import com.youssefmsaber.cinematicket.ui.theme.White
 
 @Composable
@@ -56,6 +56,7 @@ fun AvailableDaysRow(
                     style = TextStyle(
                         color = if (it.isSelected) White else Black,
                         fontSize = 24.sp,
+                        fontFamily = OpenSans,
                         fontWeight = FontWeight.Medium
                     ),
                 )
@@ -65,7 +66,7 @@ fun AvailableDaysRow(
                         color = if (it.isSelected) White else Grey,
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Medium,
-                        fontFamily = Roboto,
+                        fontFamily = OpenSans,
                     )
                 )
             }

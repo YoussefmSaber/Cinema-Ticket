@@ -48,6 +48,7 @@ import com.youssefmsaber.cinematicket.ticket_booking.model.StreamDays
 import com.youssefmsaber.cinematicket.ticket_booking.viewmodel.TicketBookingViewModel
 import com.youssefmsaber.cinematicket.ui.theme.Black
 import com.youssefmsaber.cinematicket.ui.theme.Grey
+import com.youssefmsaber.cinematicket.ui.theme.OpenSans
 import com.youssefmsaber.cinematicket.ui.theme.White
 import org.koin.androidx.compose.koinViewModel
 
@@ -145,6 +146,7 @@ private fun TicketBookingContent(
                         style = TextStyle(
                             color = Black,
                             fontSize = 24.sp,
+                            fontFamily = OpenSans,
                             fontWeight = FontWeight.Medium
                         ),
                     )
@@ -153,6 +155,7 @@ private fun TicketBookingContent(
                         style = TextStyle(
                             color = Grey,
                             fontSize = 12.sp,
+                            fontFamily = OpenSans,
                             fontWeight = FontWeight.Normal
                         ),
                     )
