@@ -137,7 +137,7 @@ private fun TicketBookingContent(
         }
         Column(
             modifier = Modifier
-                .padding(top = 16.dp)
+                .padding(vertical = 16.dp)
                 .fillMaxSize()
                 .background(
                     White,

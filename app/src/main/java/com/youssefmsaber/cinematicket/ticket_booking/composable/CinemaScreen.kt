@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.shape.GenericShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -32,7 +33,7 @@ fun CinemaScreen(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .height(180.dp)
+            .height(200.dp)
             .drawBehind {
                 val path = Path().apply {
                     moveTo(0f, size.height * topBorderHeightRatio)
@@ -52,7 +53,6 @@ fun CinemaScreen(
             }
             .clip(
                 GenericShape { size, _ ->
-                    // Same shape as cinema screen with bottom curve
                     moveTo(0f, size.height * topBorderHeightRatio)
                     quadraticTo(
                         size.width / 2f,
@@ -64,7 +64,7 @@ fun CinemaScreen(
                     arcTo(
                         rect = Rect(
                             left = 0f,
-                            top = size.height * 0.65f,
+                            top = size.height * 0.62f,
                             right = size.width,
                             bottom = size.height * 1f
                         ),
@@ -77,8 +77,8 @@ fun CinemaScreen(
             )
             .graphicsLayer {
                 scaleY = 0.9f
-                scaleX = 0.9f
-                rotationX = -40f
+                scaleX = 0.75f
+                rotationX = -45f
             }
     ) {
         Image(
@@ -86,6 +86,7 @@ fun CinemaScreen(
             contentDescription = null,
             contentScale = ContentScale.FillBounds,
             modifier = Modifier.matchParentSize()
+                .offset(y = -50.dp)
         )
     }
 }
