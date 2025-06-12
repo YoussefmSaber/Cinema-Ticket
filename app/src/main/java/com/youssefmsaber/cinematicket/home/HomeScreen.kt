@@ -3,17 +3,14 @@ package com.youssefmsaber.cinematicket.home
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -52,55 +49,21 @@ fun HomeScreen(viewModel: HomeViewModel = koinViewModel()) {
 fun HomeScreenContent(
     movies: List<Movie>
 ) {
-        val pagerState = rememberPagerState(initialPage = 1, pageCount = { movies.size })
-        Box(
+    val pagerState = rememberPagerState(initialPage = 1, pageCount = { movies.size })
+    Box {
+        BlurredImage(
             modifier = Modifier
-                .fillMaxSize()
-                .background(Color.White)
-                .verticalScroll(rememberScrollState())
+                .fillMaxWidth()
+                .background(White),
+            imageId = movies[pagerState.currentPage].image
+        )
+        LazyColumn(
+            modifier = Modifier
+                .windowInsetsPadding(WindowInsets.statusBars)
+                .padding(top = 24.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Row(
-                modifier = Modifier
-                    .padding(horizontal = 24.dp, vertical = 16.dp)
-                    .fillMaxWidth()
-                    .background(White)
-                    .align(Alignment.BottomCenter)
-                ,
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                BottomBarItem(
-                    modifier = Modifier,
-                    icon = R.drawable.movie,
-                    iconTint = White,
-                    backgroundColor = Orange
-                )
-                BottomBarItem(
-                    modifier = Modifier,
-                    icon = R.drawable.search,
-                    iconTint = Black,
-                    backgroundColor = Color.Transparent
-                )
-                BottomBarItem(
-                    modifier = Modifier,
-                    icon = R.drawable.ticket,
-                    iconTint = Black,
-                    backgroundColor = Color.Transparent
-                )
-                BottomBarItem(
-                    modifier = Modifier,
-                    icon = R.drawable.profile,
-                    iconTint = Black,
-                    backgroundColor = Color.Transparent
-                )
-            }
-            BlurredImage(imageId = movies[pagerState.currentPage].image)
-            Column(
-                modifier = Modifier
-                    .windowInsetsPadding(WindowInsets.statusBars)
-                    .padding(top = 24.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
+            item {
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
@@ -121,15 +84,58 @@ fun HomeScreenContent(
                         textColor = Color.White
                     )
                 }
+            }
+            item {
                 HorizontalHomePager(pagerState, movies)
+            }
+            item {
                 MovieDuration(
                     movieDuration = movies[pagerState.currentPage].duration,
                     textSize = 16.sp,
                     iconSize = 24.dp
                 )
+            }
+            item {
                 MovieName(movieName = movies[pagerState.currentPage].name)
+            }
+            item {
                 MovieCategories(movies[pagerState.currentPage].category)
             }
+        }
+        Row(
+            modifier = Modifier
+                .padding(horizontal = 24.dp, vertical = 16.dp)
+                .fillMaxWidth()
+                .background(White)
+                .align(Alignment.BottomCenter),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            BottomBarItem(
+                modifier = Modifier,
+                icon = R.drawable.movie,
+                iconTint = White,
+                backgroundColor = Orange
+            )
+            BottomBarItem(
+                modifier = Modifier,
+                icon = R.drawable.search,
+                iconTint = Black,
+                backgroundColor = Color.Transparent
+            )
+            BottomBarItem(
+                modifier = Modifier,
+                icon = R.drawable.ticket,
+                iconTint = Black,
+                backgroundColor = Color.Transparent
+            )
+            BottomBarItem(
+                modifier = Modifier,
+                icon = R.drawable.profile,
+                iconTint = Black,
+                backgroundColor = Color.Transparent
+            )
+        }
     }
 }
 
