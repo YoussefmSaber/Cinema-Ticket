@@ -39,6 +39,7 @@ import com.youssefmsaber.cinematicket.ticket_booking.composable.AvailableDaysRow
 import com.youssefmsaber.cinematicket.ticket_booking.composable.AvailableHoursRow
 import com.youssefmsaber.cinematicket.ticket_booking.composable.CinemaScreen
 import com.youssefmsaber.cinematicket.ticket_booking.composable.SeatPair
+import com.youssefmsaber.cinematicket.ticket_booking.composable.SeatsGuide
 import com.youssefmsaber.cinematicket.ticket_booking.data.fakeAvailableHours
 import com.youssefmsaber.cinematicket.ticket_booking.data.fakeSeatPairs
 import com.youssefmsaber.cinematicket.ticket_booking.data.fakeStreamDays
@@ -47,8 +48,10 @@ import com.youssefmsaber.cinematicket.ticket_booking.model.SeatModel
 import com.youssefmsaber.cinematicket.ticket_booking.model.StreamDays
 import com.youssefmsaber.cinematicket.ticket_booking.viewmodel.TicketBookingViewModel
 import com.youssefmsaber.cinematicket.ui.theme.Black
+import com.youssefmsaber.cinematicket.ui.theme.DarkGrey
 import com.youssefmsaber.cinematicket.ui.theme.Grey
 import com.youssefmsaber.cinematicket.ui.theme.OpenSans
+import com.youssefmsaber.cinematicket.ui.theme.Orange
 import com.youssefmsaber.cinematicket.ui.theme.White
 import org.koin.androidx.compose.koinViewModel
 
@@ -94,7 +97,7 @@ private fun TicketBookingContent(
             modifier = Modifier
                 .windowInsetsPadding(WindowInsets.statusBars)
                 .padding(horizontal = 16.dp)
-                .padding(top = 24.dp)
+                .padding(top = 16.dp)
                 .clip(CircleShape)
                 .background(Grey.copy(alpha = 0.4f))
                 .padding(8.dp)
@@ -120,6 +123,17 @@ private fun TicketBookingContent(
                     onSeatClick = { onSeatClick(it, seats.first.lineNumber) }
                 )
             }
+        }
+        Row(
+            modifier = Modifier
+                .padding(horizontal = 32.dp)
+                .padding(top = 32.dp, bottom = 16.dp)
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            SeatsGuide(text = "Available", indicationColor = White)
+            SeatsGuide(text = "Taken", indicationColor = DarkGrey)
+            SeatsGuide(text = "Selected", indicationColor = Orange)
         }
         Column(
             modifier = Modifier
@@ -165,6 +179,7 @@ private fun TicketBookingContent(
         }
     }
 }
+
 
 @Preview(showSystemUi = true)
 @Composable
