@@ -48,7 +48,7 @@ fun CinemaScreen(
                 drawPath(
                     path = path,
                     color = LightOrange,
-                    style = Stroke(width = 4.dp.toPx())
+                    style = Stroke(width = 2.dp.toPx())
                 )
             }
             .clip(
