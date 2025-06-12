@@ -1,6 +1,7 @@
 package com.youssefmsaber.cinematicket.home.composable
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -18,9 +19,10 @@ fun BlurredImage(
     Image(
         modifier = modifier
             .blur(80.dp)
-            .offset(y = (-150).dp),
+            .offset(y = (-400).dp)
+            .fillMaxSize(),
         painter = painterResource(imageId),
-        contentDescription = null
+        contentDescription = null,
     )
 }
 
