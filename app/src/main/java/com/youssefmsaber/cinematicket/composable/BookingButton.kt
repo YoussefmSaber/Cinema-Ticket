@@ -28,7 +28,6 @@ fun BookingButton(
 ) {
     Row(
         modifier = modifier
-            .padding(32.dp)
             .background(Orange, shape = CircleShape)
             .padding(horizontal = 24.dp, vertical = 12.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),

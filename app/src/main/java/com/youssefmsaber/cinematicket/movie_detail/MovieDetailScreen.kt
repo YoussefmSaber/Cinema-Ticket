@@ -87,24 +87,26 @@ fun MovieDetailContent(
                         .padding(horizontal = 16.dp),
                     movieRatings = movieDetails.ratings
                 )
-                MovieTitle(movieDetails)
+                MovieTitle(movieName = movieDetails.movieName)
                 MovieCategories(movieDetails.categories)
-                ActorsRow(movieDetails)
-                MovieDescription(movieDetails)
+                ActorsRow(actors = movieDetails.actors)
+                MovieDescription(
+                    modifier = Modifier.padding(bottom = 32.dp),
+                    movieDetails = movieDetails.description
+                )
                 BookingButton(text = "Booking")
             }
         }
-
     }
 }
 
 @Composable
-private fun ColumnScope.ActorsRow(movieDetails: MovieDetails) {
+private fun ColumnScope.ActorsRow(actors: List<Int>) {
     LazyRow(
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 24.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        items(movieDetails.actors) {
+        items(actors) {
             Image(
                 modifier = Modifier
                     .clip(CircleShape)
@@ -117,11 +119,14 @@ private fun ColumnScope.ActorsRow(movieDetails: MovieDetails) {
 }
 
 @Composable
-private fun MovieDescription(movieDetails: MovieDetails) {
+private fun MovieDescription(
+    modifier: Modifier = Modifier,
+    movieDetails: String
+) {
     Text(
-        modifier = Modifier
+        modifier = modifier
             .padding(horizontal = 20.dp),
-        text = movieDetails.description,
+        text = movieDetails,
         style = TextStyle(
             fontSize = 15.sp,
             fontFamily = Roboto,
@@ -137,12 +142,12 @@ private fun MovieDescription(movieDetails: MovieDetails) {
 }
 
 @Composable
-private fun MovieTitle(movieDetails: MovieDetails) {
+private fun MovieTitle(movieName: String) {
     Text(
         modifier = Modifier
             .padding(bottom = 24.dp)
             .padding(horizontal = 16.dp),
-        text = movieDetails.movieName,
+        text = movieName,
         style = TextStyle(
             fontSize = 28.sp,
             letterSpacing = 0.15.sp,
